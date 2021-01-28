@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="All Project"
+        android:id="@+id/all"
+        android:icon="@drawable/ic_baseline_person_24"
+        >
+    </item>
+
+    <item
+        android:title="All Project"
+        android:id="@+id/al"
+        android:icon="@drawable/ic_baseline_person_24"
+        >
+    </item>
+
+    <item
+        android:title="All Project"
+        android:id="@+id/a"
+        android:icon="@drawable/ic_baseline_person_24"
+        >
+    </item>
+
+    <item
+        android:title="All Project"
+        android:id="@+id/alll"
+        android:icon="@drawable/ic_baseline_person_24"
+        >
+    </item>
+
+</menu>

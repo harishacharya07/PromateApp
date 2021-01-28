@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="120dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/projectid"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:hint="Projectid"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/custominput"
+        android:layout_height="50dp"/>
+
+
+    <EditText
+        android:id="@+id/projectname1"
+        android:layout_width="match_parent"
+        android:layout_marginTop="0dp"
+        android:hint="project name"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/custominput"
+        android:layout_height="50dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/projectid1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custominput"
+        android:hint="project code"
+        android:padding="10dp">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/btnsubmit1"
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="create"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/shape"
+        android:layout_height="50dp">
+
+    </Button>
+
+</LinearLayout>

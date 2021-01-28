@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1051521054333",
+    "project_id": "promate-e5e9a",
+    "storage_bucket": "promate-e5e9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051521054333:android:dd728b5f50b769cc67e314",
+        "android_client_info": {
+          "package_name": "com.ttwcalc.promate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051521054333-dsoornut8smjsion60a2d7afe5aetom7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ttwcalc.promate",
+            "certificate_hash": "035789103594d9cf2798251705570bb271f8fc2f"
+          }
+        },
+        {
+          "client_id": "1051521054333-umem6309ie266q1ef1c8jdqjb9dsukej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWz2LGRA8ZK97NrV2OwZoKwE8WKrpOYCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051521054333-umem6309ie266q1ef1c8jdqjb9dsukej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
