@@ -26,6 +26,21 @@ public class SendOtpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_otp);
 
+        button = findViewById(R.id.send);
+        editText = findViewById(R.id.editTextPhone);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if (editText.getText().toString().isEmpty()) {
+                   Toast.makeText(SendOtpActivity.this, "Please enter your mobile number", Toast.LENGTH_SHORT).show();
+               } else {
+                String number = editText.getText().toString().trim();
+                Intent intent = new Intent(SendOtpActivity.this, VerifyOtpActivity.class);
+                intent.putExtra("number", number);
+                startActivity(intent);
+               }
+            }
+        });
     }
 }
