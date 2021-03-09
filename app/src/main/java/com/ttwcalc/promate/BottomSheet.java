@@ -25,8 +25,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
     public FirebaseDatabase firebaseDatabase;
     public String firebaseAuth;
 
-
-
     public BottomSheet() {
 
     }
@@ -35,9 +33,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bottom_sheet, container, false);
-
-       // firebaseDatabase = FirebaseDatabase.getInstance();
-       // firebaseAuth = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         projectname = view.findViewById(R.id.projectname);
         projectid = view.findViewById(R.id.projectid);
@@ -49,8 +44,6 @@ public class BottomSheet extends BottomSheetDialogFragment {
 
                 String name = projectname.getText().toString().trim();
                 String id = projectid.getText().toString().trim();
-               // firebaseDatabase.getReference().child("Project").child(firebaseAuth);
-
             }
         });
         return view;
