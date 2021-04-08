@@ -67,4 +67,6 @@ public class AllProjectFragment extends Fragment {
         super.onStop();
         myadapter.stopListening();
     }
+
+
 }

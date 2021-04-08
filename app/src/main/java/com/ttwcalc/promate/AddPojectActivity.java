@@ -3,6 +3,7 @@ package com.ttwcalc.promate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -50,15 +51,13 @@ public class AddPojectActivity extends AppCompatActivity {
         //firebaseDatabase = FirebaseDatabase.getInstance();
        // firebaseAuth = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        projectname = findViewById(R.id.projectname1);
-        projectid = findViewById(R.id.projectid1);
-        btnsubmit = findViewById(R.id.btnsubmit1);
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SimpleDateFormat")
             @Override
             public void onClick(View v) {
 
-                final int pid  = genarateProjectId(projectId);
+                final int pid  = genarateProjectId();
                 String n = Integer.toString(pid);
                 projectId.setText(n);
 
@@ -67,18 +66,18 @@ public class AddPojectActivity extends AppCompatActivity {
                 dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
                 String name = projectname.getText().toString().trim();
-                String id = projectid.getText().toString().trim();
+                //String id = projectid.getText().toString().trim();
                 Map<String, Object> map = new HashMap<>();
                 map.put("name", name);
-                map.put("id", id);
-                map.put("pid", n);
+                //map.put("id", id);
+                map.put("pid", "Id:" + n);
                 map.put("date", dateFormat.format(date));
-                FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/")
+                FirebaseDatabase.getInstance()
                         .getReference().child("Projects").child(n)
                         .setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Intent intent = new Intent(AddPojectActivity.this, ExpenditureActivity.class);
+                        Intent intent = new Intent(AddPojectActivity.this, MainActivity.class);
                         intent.putExtra("id", pid);
                         startActivity(intent);
 
@@ -91,7 +90,7 @@ public class AddPojectActivity extends AppCompatActivity {
                 });
             }
 
-            private int genarateProjectId(EditText projectId) {
+            private int genarateProjectId() {
                 String pid;
                 Random random = new Random();
                 int randomNumber = random.nextInt(1000);

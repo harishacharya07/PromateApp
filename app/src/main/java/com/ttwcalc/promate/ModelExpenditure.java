@@ -2,7 +2,21 @@ package com.ttwcalc.promate;
 
 public class ModelExpenditure {
 
-    String name, date, id;
+    String name;
+    String date;
+    String id;
+    String amount;
+    String place;
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    String pid;
 
     ModelExpenditure() {
 
@@ -35,4 +49,21 @@ public class ModelExpenditure {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getPlace(){
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.name = place;
+    }
+
+    public String getAmount(){
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
 }

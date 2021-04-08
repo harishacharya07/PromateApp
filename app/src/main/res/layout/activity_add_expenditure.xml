@@ -8,11 +8,20 @@
     app:layout_behavior="@string/bottom_sheet_behavior"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:elevation="5dp"
+        app:title="Details"
+        app:titleTextColor="@color/colorPrimary"
+        android:layout_height="wrap_content">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <EditText
-        android:id="@+id/projectid"
+        android:id="@+id/work"
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
-        android:hint="Projectid"
+        android:hint="Name of the work"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         android:layout_marginLeft="10dp"
@@ -22,10 +31,10 @@
 
 
     <EditText
-        android:id="@+id/projectname1"
+        android:id="@+id/sName"
         android:layout_width="match_parent"
         android:layout_marginTop="0dp"
-        android:hint="project name"
+        android:hint="Name of the subcontractor"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         android:layout_marginLeft="10dp"
@@ -36,7 +45,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/projectid1"
+        android:id="@+id/place"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
@@ -44,7 +53,24 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custominput"
-        android:hint="project code"
+        android:hint="Place"
+        android:inputType="text"
+        android:padding="10dp">
+
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="number"
+        android:background="@drawable/custominput"
+        android:hint="Enter amount"
         android:padding="10dp">
 
     </EditText>

@@ -12,6 +12,7 @@ public class Project {
         this.name = name;
         this.date = date;
         this.pid = pid;
+
     }
 
 

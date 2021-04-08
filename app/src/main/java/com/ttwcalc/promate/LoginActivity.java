@@ -41,15 +41,19 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.editTextTextPassword);
 
         progressDialog = new ProgressDialog(this);
-
-
-
         firebaseAuth = FirebaseAuth.getInstance();
+
+
+        if (firebaseAuth.getCurrentUser() != null){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SelectYourRollActivity.class);
                 startActivity(intent);
             }
         });
@@ -79,8 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this,"login sucessfull", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                            Toast.makeText(LoginActivity.this,"login successful", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(LoginActivity.this,SelectYourRollActivity .class);
                             startActivity(i);
                             finish();
                             progressDialog.dismiss();
