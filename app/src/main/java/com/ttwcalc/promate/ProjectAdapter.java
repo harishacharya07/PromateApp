@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdapter.myviewHolder> {
@@ -31,6 +33,11 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdap
         holder.date.setText(model.getDate());
         holder.ids.setText(model.getPid());
         final String pid = model.getPid();
+        FirebaseUser firebaseAuth;
+
+        firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
+        final String uid = firebaseAuth.getUid();
+
         final Context context;
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

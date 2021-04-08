@@ -18,6 +18,8 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -29,6 +31,9 @@ public class AllProjectFragment extends Fragment {
 
     ProjectAdapter myadapter;
     ProgressDialog progressDialog;
+    DatabaseReference databaseReference;
+
+    FirebaseAuth firebaseAuth;
 
     @Nullable
     @Override
@@ -38,12 +43,17 @@ public class AllProjectFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recylerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        final String userId;
+        userId = firebaseAuth.getCurrentUser().getUid();
+
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>().
                 setQuery(FirebaseDatabase.getInstance().
                         getReference().child("Projects"), Project.class).build();
 
         myadapter = new ProjectAdapter(options);
         recyclerView.setAdapter(myadapter);
+
 
         floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

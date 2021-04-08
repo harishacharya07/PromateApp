@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
@@ -25,12 +26,9 @@ import java.util.Random;
 public class AddPojectActivity extends AppCompatActivity {
 
     private EditText projectname;
-    private EditText projectid;
     private Button btnsubmit;
     private EditText projectId;
-
-    String firebaseAuth;
-
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +38,16 @@ public class AddPojectActivity extends AppCompatActivity {
         final FirebaseDatabase database = FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/");
        // firebaseAuth = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        projectname = findViewById(R.id.projectname);
-        projectid = findViewById(R.id.projectid);
-        btnsubmit = findViewById(R.id.btnsubmit);
+        projectname = findViewById(R.id.projectname1);
+        btnsubmit = findViewById(R.id.btnsubmit1);
         projectId = findViewById(R.id.projectid);
 
         final Date date = new Date();
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        final String userId;
+        userId = firebaseAuth.getCurrentUser().getUid();
 
-        //firebaseDatabase = FirebaseDatabase.getInstance();
-       // firebaseAuth = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +64,9 @@ public class AddPojectActivity extends AppCompatActivity {
                 dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
                 String name = projectname.getText().toString().trim();
-                //String id = projectid.getText().toString().trim();
                 Map<String, Object> map = new HashMap<>();
                 map.put("name", name);
-                //map.put("id", id);
-                map.put("pid", "Id:" + n);
+                map.put("pid", n);
                 map.put("date", dateFormat.format(date));
                 FirebaseDatabase.getInstance()
                         .getReference().child("Projects").child(n)

@@ -78,11 +78,12 @@ public class AddExpenditureActivity extends AppCompatActivity {
                     map.put("date", dateFormat.format(date));
 
                     FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/").getReference()
-                            .child("Exprnditure").child(PID).push()
+                            .child("Exprnditure").child(PID)
                             .setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Intent intent = new Intent(AddExpenditureActivity.this, ExpenditureActivity.class);
+                            intent.putExtra("pid", PID);
                             startActivity(intent);
 
                         }

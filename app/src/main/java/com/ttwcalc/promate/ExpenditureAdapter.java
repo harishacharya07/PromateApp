@@ -2,6 +2,7 @@ package com.ttwcalc.promate;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -55,6 +57,14 @@ public class ExpenditureAdapter extends FirebaseRecyclerAdapter<ModelExpenditure
                 builder.show();
             }
         });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), DetailsExpenditureActivity.class);
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @NonNull
@@ -68,6 +78,7 @@ public class ExpenditureAdapter extends FirebaseRecyclerAdapter<ModelExpenditure
 
         TextView name, id, date, amount;
         ImageView del;
+        CardView cardView;
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +87,8 @@ public class ExpenditureAdapter extends FirebaseRecyclerAdapter<ModelExpenditure
             date = itemView.findViewById(R.id.date);
             amount = itemView.findViewById(R.id.amount);
             del = itemView.findViewById(R.id.del);
+            cardView = itemView.findViewById(R.id.expNames);
+
 
         }
     }

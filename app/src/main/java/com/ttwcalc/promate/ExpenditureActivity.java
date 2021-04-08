@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class ExpenditureActivity extends AppCompatActivity {
@@ -31,6 +34,8 @@ public class ExpenditureActivity extends AppCompatActivity {
     ExpenditureAdapter myadapter;
     TextView totalvalues;
     FirebaseAuth firebaseAuth;
+    EditText search;
+    String uid;
 
 
     @Override
@@ -38,23 +43,23 @@ public class ExpenditureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenditure);
         recyclerView = findViewById(R.id.recylerview);
+        search = findViewById(R.id.search);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         //textView = findViewById(R.id.pid);
         Intent intent = getIntent();
-        final String name1 = intent.getStringExtra("pid");
-        // textView.setText(name1);
+        final String names = intent.getStringExtra("pid");
 
         FirebaseRecyclerOptions<ModelExpenditure> options = new FirebaseRecyclerOptions.Builder<ModelExpenditure>().
                 setQuery(FirebaseDatabase.getInstance().
-                        getReference().child("Exprnditure").child(name1), ModelExpenditure.class).build();
+                        getReference().child("Exprnditure").child(names), ModelExpenditure.class).build();
 
         myadapter = new ExpenditureAdapter(options);
         recyclerView.setAdapter(myadapter);
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        String uid = firebaseUser.getUid();
+        uid = firebaseUser.getUid();
 
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/");
@@ -66,13 +71,13 @@ public class ExpenditureActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(ExpenditureActivity.this, AddExpenditureActivity.class);
-                intent.putExtra("pid", name1);
+                intent.putExtra("pid", names);
                 startActivity(intent);
             }
         });
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference(name1);
+        databaseReference = firebaseDatabase.getReference(names);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -83,7 +88,6 @@ public class ExpenditureActivity extends AppCompatActivity {
                     int value = Integer.parseInt(dataSnapshot.child("amount").getValue().toString());
                     totalValue =  totalValue + value;
                     String sTotal = String.valueOf(totalValue);
-                    totalvalues.setText(sTotal);
 
                 //String value = dataSnapshot.child("pid").getValue().toString();
                 //totalvalues.setText(value);
@@ -92,6 +96,18 @@ public class ExpenditureActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchName = search.getText().toString();
+                DatabaseReference databaseReference;
+                databaseReference = FirebaseDatabase.getInstance().getReference("Exprnditure");
+
+                Query query = databaseReference.orderByChild("name").startAt(searchName).endAt(searchName + "\uf8ff");
 
             }
         });

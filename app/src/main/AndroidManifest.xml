@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectYourRollActivity"></activity>
+        <activity android:name=".DetailsExpenditureActivity"></activity>
+        <activity android:name=".SelectYourRollActivity" />
         <activity android:name=".VerifyOtpActivity" />
         <activity android:name=".SendOtpActivity" />
         <activity android:name=".AddExpenditureActivity" />
