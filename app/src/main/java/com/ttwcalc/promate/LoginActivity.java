@@ -49,18 +49,19 @@ public class LoginActivity extends AppCompatActivity {
                 MODE_PRIVATE);
         String userType = sharedPreferences.getString(USER_TYPE, null);
 
-        if (firebaseAuth.getCurrentUser() != null){
+        if (firebaseAuth.getCurrentUser() != null) {
 
             if (userType.equals("client")) {
                 Intent intent = new Intent(LoginActivity.this, ClientsActivity.class);
                 startActivity(intent);
                 finish();
             } else if(userType.equals("engineer")) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, EngineerDashBoardFragment.class);
                 startActivity(intent);
                 finish();
-            } else if (userType.equals("subcontractor")){
-                Intent intent = new Intent(LoginActivity.this, SubContractorMainActivity.class);
+            } else if (userType.equals("subcontractor")) {
+                Intent intent = new Intent(LoginActivity.this,
+                        SubContractorMainActivity.class);
                 startActivity(intent);
                 finish();
             } else {

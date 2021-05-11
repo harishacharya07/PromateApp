@@ -47,7 +47,7 @@ public class SelectYourRollActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectYourRollActivity.this,
-                        MainActivity.class);
+                        EngineerDashBoardFragment.class);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(USER_TYPE, "engineer");
                 editor.apply();

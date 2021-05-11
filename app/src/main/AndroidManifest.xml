@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClientsActivity"></activity>
+        <activity android:name=".EngineerDashBoardFragment"></activity>
+        <activity android:name=".ClientsActivity" />
         <activity android:name=".LoginSub" />
         <activity android:name=".SubContractorMainActivity" />
         <activity android:name=".DetailsExpenditureActivity" />
