@@ -3,11 +3,13 @@ package com.ttwcalc.promate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
     private Button btnSubmit;
     private EditText amount;
     private TextView textView;
+    private final boolean isApproved = true;
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/");
 
@@ -47,9 +50,11 @@ public class AddExpenditureActivity extends AppCompatActivity {
         amount = findViewById(R.id.amount);
         textView = findViewById(R.id.test);
 
+
         Intent intent = getIntent();
         final String PID = intent.getStringExtra("pid");
         textView.setText(PID);
+
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +70,11 @@ public class AddExpenditureActivity extends AppCompatActivity {
                     Toast.makeText(AddExpenditureActivity.this, "Please  fill all the details", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    String wName = workName.getText().toString();
-                    String subName = sName.getText().toString();
+                    final String wName = workName.getText().toString();
+                    final String subName = sName.getText().toString();
                     String pName = place.getText().toString();
                     String aName = amount.getText().toString();
+
                     Map<String, Object> map = new HashMap<>();
                     map.put("name", wName);
                     map.put("id", subName );
@@ -76,28 +82,19 @@ public class AddExpenditureActivity extends AppCompatActivity {
                     map.put("place", pName);
                     map.put("amount", aName);
                     map.put("date", dateFormat.format(date));
+                    map.put("isApproved", "false");
 
-                    FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/").getReference()
-                            .child("Exprnditure").child(PID)
-                            .setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Intent intent = new Intent(AddExpenditureActivity.this, ExpenditureActivity.class);
-                            intent.putExtra("pid", PID);
-                            startActivity(intent);
 
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                        }
-                    });
-
-                    FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/").getReference().child(PID).child(wName).
+                    FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/")
+                            .getReference().child(PID).child(wName).
                             setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            Intent intent = new Intent(AddExpenditureActivity.this,
+                                    ExpenditureActivity.class);
+                            intent.putExtra("pid", PID);
+                            intent.putExtra("wName", wName);
+                            startActivity(intent);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {

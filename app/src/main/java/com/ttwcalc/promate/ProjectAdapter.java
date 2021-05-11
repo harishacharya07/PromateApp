@@ -33,12 +33,16 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdap
         holder.date.setText(model.getDate());
         holder.ids.setText(model.getPid());
         final String pid = model.getPid();
-        FirebaseUser firebaseAuth;
+        FirebaseAuth firebaseAuth;
 
-        firebaseAuth = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        final String userId = firebaseAuth.getCurrentUser().getUid();
+
         final String uid = firebaseAuth.getUid();
 
         final Context context;
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +62,8 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdap
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        FirebaseDatabase.getInstance().getReference().child("Projects").child(getRef(position).getKey()).removeValue();
+                        FirebaseDatabase.getInstance().getReference().child(userId).child
+                                (getRef(position).getKey()).removeValue();
 
                     }
                 });
@@ -77,7 +82,8 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdap
     @NonNull
     @Override
     public myviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recylerview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recylerview, parent,
+                false);
         return new myviewHolder(view);
     }
 

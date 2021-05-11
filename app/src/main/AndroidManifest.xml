@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailsExpenditureActivity"></activity>
+        <activity android:name=".ClientsActivity"></activity>
+        <activity android:name=".LoginSub" />
+        <activity android:name=".SubContractorMainActivity" />
+        <activity android:name=".DetailsExpenditureActivity" />
         <activity android:name=".SelectYourRollActivity" />
         <activity android:name=".VerifyOtpActivity" />
         <activity android:name=".SendOtpActivity" />

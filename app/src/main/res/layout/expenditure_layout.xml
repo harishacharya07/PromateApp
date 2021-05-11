@@ -110,6 +110,17 @@
                 app:layout_constraintVertical_bias="0.252"
                 app:srcCompat="@drawable/rupee" />
 
+            <ImageView
+                android:id="@+id/approvedImageView"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/check"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.551"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

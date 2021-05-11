@@ -32,7 +32,7 @@ public class ExpenditureActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     RecyclerView recyclerView;
     ExpenditureAdapter myadapter;
-    TextView totalvalues;
+    TextView totalValues;
     FirebaseAuth firebaseAuth;
     EditText search;
     String uid;
@@ -50,10 +50,11 @@ public class ExpenditureActivity extends AppCompatActivity {
         //textView = findViewById(R.id.pid);
         Intent intent = getIntent();
         final String names = intent.getStringExtra("pid");
+        final String wName = intent.getStringExtra("wName");
 
         FirebaseRecyclerOptions<ModelExpenditure> options = new FirebaseRecyclerOptions.Builder<ModelExpenditure>().
                 setQuery(FirebaseDatabase.getInstance().
-                        getReference().child("Exprnditure").child(names), ModelExpenditure.class).build();
+                        getReference().child(names), ModelExpenditure.class).build();
 
         myadapter = new ExpenditureAdapter(options);
         recyclerView.setAdapter(myadapter);
@@ -64,7 +65,8 @@ public class ExpenditureActivity extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/");
         floatingActionButton = findViewById(R.id.fab);
-        totalvalues = (TextView) findViewById(R.id.total);
+        totalValues = (TextView) findViewById(R.id.total);
+        totalValues.setText(names);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +79,9 @@ public class ExpenditureActivity extends AppCompatActivity {
         });
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference(names);
+        //databaseReference = firebaseDatabase.getReference(names);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        /*databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int totalValue = 0;
@@ -98,7 +100,7 @@ public class ExpenditureActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override

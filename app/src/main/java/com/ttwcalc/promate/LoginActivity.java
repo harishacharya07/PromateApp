@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
 
+    private  static String USER_TYPE = "userRole";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,27 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("SelectUserRole",
+                MODE_PRIVATE);
+        String userType = sharedPreferences.getString(USER_TYPE, null);
 
         if (firebaseAuth.getCurrentUser() != null){
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+
+            if (userType.equals("client")) {
+                Intent intent = new Intent(LoginActivity.this, ClientsActivity.class);
+                startActivity(intent);
+                finish();
+            } else if(userType.equals("engineer")) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            } else if (userType.equals("subcontractor")){
+                Intent intent = new Intent(LoginActivity.this, SubContractorMainActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                return;
+            }
         }
 
         signupbtn.setOnClickListener(new View.OnClickListener() {

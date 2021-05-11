@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,7 @@ public class AddPojectActivity extends AppCompatActivity {
         final String userId;
         userId = firebaseAuth.getCurrentUser().getUid();
 
+        final ProgressDialog progressDialog = new ProgressDialog(AddPojectActivity.this);
 
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
@@ -63,19 +65,25 @@ public class AddPojectActivity extends AppCompatActivity {
 
                 dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
+                progressDialog.setTitle("Wait");
+                progressDialog.show();
+
                 String name = projectname.getText().toString().trim();
                 Map<String, Object> map = new HashMap<>();
                 map.put("name", name);
                 map.put("pid", n);
                 map.put("date", dateFormat.format(date));
                 FirebaseDatabase.getInstance()
-                        .getReference().child("Projects").child(n)
+                        .getReference().child(userId).child(n)
                         .setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Intent intent = new Intent(AddPojectActivity.this, MainActivity.class);
                         intent.putExtra("id", pid);
                         startActivity(intent);
+                        progressDialog.dismiss();
+                        finish();
+
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -93,6 +101,8 @@ public class AddPojectActivity extends AppCompatActivity {
                 return randomNumber;
             }
         });
+
+
     }
 
 }
