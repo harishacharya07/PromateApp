@@ -39,6 +39,8 @@ public class EngineerDashBoardFragment extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame, new EngineerDashFragment())
                 .commit();
+        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().
+                getColor(R.color.colorPrimary));
         navigationView.setCheckedItem(R.id.all);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.

@@ -57,11 +57,12 @@ public class AllProjectFragment extends Fragment {
 
         progressDialog.show();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(userId);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().
+                getReference("Projects");
 
         FirebaseRecyclerOptions<Project> options = new FirebaseRecyclerOptions.Builder<Project>().
                 setQuery(FirebaseDatabase.getInstance().
-                        getReference().child(userId), Project.class).build();
+                        getReference().child("Projects").child(userId), Project.class).build();
 
         myadapter = new ProjectAdapter(options);
 
@@ -69,7 +70,7 @@ public class AllProjectFragment extends Fragment {
         myadapter.notifyDataSetChanged();
 
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -90,15 +91,6 @@ public class AllProjectFragment extends Fragment {
             }
         });
 
-        
-        floatingActionButton = view.findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddPojectActivity.class);
-                startActivity(intent);
-            }
-        });
         return view;
     }
 

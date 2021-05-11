@@ -74,7 +74,7 @@ public class AddPojectActivity extends AppCompatActivity {
                 map.put("pid", n);
                 map.put("date", dateFormat.format(date));
                 FirebaseDatabase.getInstance()
-                        .getReference().child(userId).child(n)
+                        .getReference().child("Projects").child(userId).child(n)
                         .setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
