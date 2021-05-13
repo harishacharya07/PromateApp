@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     app:behavior_hideable="true"
     app:behavior_peekHeight="120dp"
+    tools:context=".AddClientExpenditureActivity"
     app:layout_behavior="@string/bottom_sheet_behavior"
     android:layout_height="match_parent">
 
@@ -12,7 +14,7 @@
         android:layout_width="match_parent"
         android:elevation="10dp"
         android:background="#fff"
-        app:title="New Project"
+        app:title="New Expenditure"
         app:titleTextColor="@color/colorPrimary"
         android:layout_height="wrap_content">
 
@@ -29,46 +31,20 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/project_name"
+                android:id="@+id/client_exp_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/shape_4"
-                android:hint="Project Name"
+                android:hint="expenditure name"
                 android:padding="10dp">
 
             </EditText>
 
             <EditText
-                android:id="@+id/project_location"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/shape_4"
-                android:hint="Location"
-                android:padding="10dp">
-
-            </EditText>
-
-            <EditText
-                android:id="@+id/project_client"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/shape_4"
-                android:hint="Client Name"
-                android:padding="10dp">
-
-            </EditText>
-
-            <EditText
-                android:id="@+id/project_total_amount"
+                android:id="@+id/client_exp_amount"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
@@ -82,7 +58,7 @@
             </EditText>
 
             <EditText
-                android:id="@+id/project_description"
+                android:id="@+id/client_exp_disc"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginLeft="10dp"
@@ -96,23 +72,8 @@
 
             </EditText>
 
-            <TextView
-                android:id="@+id/project_id"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/shape_4"
-                android:gravity="center_vertical"
-                android:hint="Your Project ID (Auto Generated )"
-                android:padding="10dp">
-
-            </TextView>
-
             <Button
-                android:id="@+id/project_button"
+                android:id="@+id/expenditure_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"

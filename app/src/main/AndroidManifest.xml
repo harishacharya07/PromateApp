@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClientExpenditureActivity"></activity>
+        <activity android:name=".AddClientExpenditureActivity"></activity>
+        <activity android:name=".EngineerClientActivity" />
+        <activity android:name=".ClientExpenditureActivity" />
         <activity android:name=".ClientsDetailsActivity" />
         <activity android:name=".EngineerDashBoardFragment" />
         <activity android:name=".ClientsActivity" />

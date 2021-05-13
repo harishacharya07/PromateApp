@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class ExpenditureActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     EditText search;
     String uid;
+    Button changeToClient;
 
 
     @Override
@@ -43,12 +45,13 @@ public class ExpenditureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenditure);
         recyclerView = findViewById(R.id.recylerview);
-        search = findViewById(R.id.search);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        changeToClient = findViewById(R.id.change_client);
 
 
         //textView = findViewById(R.id.pid);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         final String names = intent.getStringExtra("pid");
         final String wName = intent.getStringExtra("wName");
 
@@ -102,15 +105,12 @@ public class ExpenditureActivity extends AppCompatActivity {
             }
         });*/
 
-        search.setOnClickListener(new View.OnClickListener() {
+        changeToClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String searchName = search.getText().toString();
-                DatabaseReference databaseReference;
-                databaseReference = FirebaseDatabase.getInstance().getReference("Exprnditure");
-
-                Query query = databaseReference.orderByChild("name").startAt(searchName).endAt(searchName + "\uf8ff");
-
+                Intent intent1 = new Intent(ExpenditureActivity.this, EngineerClientActivity.class);
+                intent1.putExtra("pid", names);
+                startActivity(intent1);
             }
         });
 
