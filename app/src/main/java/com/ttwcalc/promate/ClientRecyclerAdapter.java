@@ -47,7 +47,8 @@ public class ClientRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.clientCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), ClientExpenditureActivity.class);
+                Intent intent = new Intent(holder.itemView.getContext(),
+                        ClientExpenditureActivity.class);
                 intent.putExtra("id", pid);
                 holder.itemView.getContext().startActivity(intent);
             }

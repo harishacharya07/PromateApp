@@ -22,6 +22,9 @@ public class DetailsExpenditureActivity extends AppCompatActivity {
     private Button button;
     private DatabaseReference databaseReference;
     private TextView nameDetails;
+    private TextView createdDate;
+    private TextView createdAmount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +32,11 @@ public class DetailsExpenditureActivity extends AppCompatActivity {
 
         button = findViewById(R.id.buttonAdd);
         nameDetails = findViewById(R.id.nameDetails);
+        createdDate = findViewById(R.id.project_name);
+        createdAmount = findViewById(R.id.created_date);
 
         Intent intent = getIntent();
+
         final String idFire = intent.getStringExtra("ids");
         final String name = intent.getStringExtra("name");
         final String date = intent.getStringExtra("date");
@@ -41,7 +47,9 @@ public class DetailsExpenditureActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference(pid);
         String wName = intent.getStringExtra("wName");
 
-        nameDetails.setText(pid);
+        nameDetails.setText(name);
+        createdDate.setText(amount);
+        createdAmount.setText(date);
 
         final Map<String, Object> map = new HashMap<>();
         map.put("isApproved", true);

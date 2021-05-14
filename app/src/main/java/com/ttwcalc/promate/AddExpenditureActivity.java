@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.sql.StatementEvent;
 
@@ -75,9 +76,11 @@ public class AddExpenditureActivity extends AppCompatActivity {
                     String pName = place.getText().toString();
                     String aName = amount.getText().toString();
 
+                    String id = generateId();
+
                     Map<String, Object> map = new HashMap<>();
                     map.put("name", wName);
-                    map.put("id", subName );
+                    map.put("id", id);
                     map.put("pid", PID);
                     map.put("place", pName);
                     map.put("amount", aName);
@@ -86,7 +89,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
 
 
                     FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/")
-                            .getReference().child(PID).child(wName).
+                            .getReference().child("Expenditure").child(PID).child(id).
                             setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -105,6 +108,28 @@ public class AddExpenditureActivity extends AppCompatActivity {
                     });
 
                 }
+
+            }
+
+            private String generateId() {
+                String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+                StringBuilder sb = new StringBuilder();
+
+                Random random = new Random();
+
+                int length = 5;
+
+                for(int i = 0; i < length; i++) {
+
+                    int index = random.nextInt(alphabet.length());
+                    char randomChar = alphabet.charAt(index);
+
+                    sb.append(randomChar);
+                }
+
+                String randomString = sb.toString();
+                return  randomString;
             }
         });
     }

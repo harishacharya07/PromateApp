@@ -52,11 +52,6 @@ public class ExpenditureAdapter extends FirebaseRecyclerAdapter<ModelExpenditure
         final String isApprovedStatus = model.getIsApproved();
 
 
-        if (isApprovedStatus.equals("true")) {
-            holder.isApprovedImage.setImageResource(R.drawable.check);
-        }
-
-
         holder.isApprovedImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +92,7 @@ public class ExpenditureAdapter extends FirebaseRecyclerAdapter<ModelExpenditure
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), DetailsExpenditureActivity.class);
-                intent.putExtra("ids", pid);
+                intent.putExtra("ids", id);
                 intent.putExtra("amount", amount);
                 intent.putExtra("date", date);
                 intent.putExtra("name", name);

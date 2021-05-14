@@ -10,18 +10,20 @@
         android:id="@+id/circleImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="88dp"
         android:elevation="10dp"
         android:src="@drawable/client_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/credentials"
+        app:layout_constraintVertical_bias="0.724">
 
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/credentials"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/shape"
         android:text="Get started"
         android:textColor="#fff"
@@ -50,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5"
-        app:layout_constraintVertical_bias="0.409" />
+        app:layout_constraintTop_toBottomOf="@+id/credentials"
+        app:layout_constraintVertical_bias="0.81" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

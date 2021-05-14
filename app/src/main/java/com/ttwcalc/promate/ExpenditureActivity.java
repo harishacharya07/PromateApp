@@ -2,15 +2,19 @@ package com.ttwcalc.promate;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -25,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import static com.ttwcalc.promate.R.menu.search;
+
 public class ExpenditureActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
@@ -38,6 +44,8 @@ public class ExpenditureActivity extends AppCompatActivity {
     EditText search;
     String uid;
     Button changeToClient;
+    Toolbar toolbar;
+    SearchView searchView;
 
 
     @Override
@@ -49,15 +57,20 @@ public class ExpenditureActivity extends AppCompatActivity {
 
         changeToClient = findViewById(R.id.change_client);
 
+        toolbar = findViewById(R.id.exp_toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.inflateMenu(R.menu.search);
+
 
         //textView = findViewById(R.id.pid);
         final Intent intent = getIntent();
         final String names = intent.getStringExtra("pid");
         final String wName = intent.getStringExtra("wName");
 
+
         FirebaseRecyclerOptions<ModelExpenditure> options = new FirebaseRecyclerOptions.Builder<ModelExpenditure>().
                 setQuery(FirebaseDatabase.getInstance().
-                        getReference().child(names), ModelExpenditure.class).build();
+                        getReference().child("Expenditure").child(names), ModelExpenditure.class).build();
 
         myadapter = new ExpenditureAdapter(options);
         recyclerView.setAdapter(myadapter);
@@ -108,7 +121,8 @@ public class ExpenditureActivity extends AppCompatActivity {
         changeToClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(ExpenditureActivity.this, EngineerClientActivity.class);
+                Intent intent1 = new Intent(ExpenditureActivity.this,
+                        EngineerClientActivity.class);
                 intent1.putExtra("pid", names);
                 startActivity(intent1);
             }
@@ -128,4 +142,42 @@ public class ExpenditureActivity extends AppCompatActivity {
         myadapter.stopListening();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.searchbar, menu);
+
+        //MenuItem menuItem = menu.findItem(R.id.search_bar);
+        searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+           @Override
+           public boolean onQueryTextSubmit(String s) {
+               processSearch(s);
+               return false;
+           }
+
+           @Override
+           public boolean onQueryTextChange(String s) {
+               processSearch(s);
+               return false;
+           }
+       });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void processSearch(String s) {
+
+        Intent intent = getIntent();
+
+        final String names = intent.getStringExtra("pid");
+
+        FirebaseRecyclerOptions<ModelExpenditure> options = new FirebaseRecyclerOptions.Builder<ModelExpenditure>().
+                setQuery(FirebaseDatabase.getInstance().
+                        getReference().child("Expenditure").orderByChild(names)
+                        .startAt(s).endAt(s + "\uf8ff"), ModelExpenditure.class).build();
+
+        myadapter = new ExpenditureAdapter(options);
+        myadapter.startListening();
+        recyclerView.setAdapter(myadapter);
+    }
 }
