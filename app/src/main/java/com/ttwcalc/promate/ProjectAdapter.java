@@ -11,14 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ttwcalc.promate.subcontractor.DetailsMainActivity;
 
 public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdapter.myviewHolder> {
 
@@ -47,7 +46,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), ExpenditureActivity.class);
+                Intent intent = new Intent(holder.itemView.getContext(), DetailsMainActivity.class);
                 intent.putExtra("pid", pid);
                 holder.itemView.getContext().startActivity(intent);
             }

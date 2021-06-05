@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddClientExpenditureActivity"></activity>
+        <activity android:name=".ClientExpenditure"></activity>
+        <activity android:name=".subcontractor.AddNewSubContractors" />
+        <activity android:name=".subcontractor.DetailsMainActivity" />
+        <activity android:name=".AddClientExpenditureActivity" />
         <activity android:name=".EngineerClientActivity" />
         <activity android:name=".ClientExpenditureActivity" />
         <activity android:name=".ClientsDetailsActivity" />

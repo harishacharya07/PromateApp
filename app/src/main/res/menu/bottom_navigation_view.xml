@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+      android:id="@+id/contractor"
+        android:title="Subcontractor"
+        app:showAsAction="always"
+        android:icon="@drawable/worker"
+        >
+
+    </item>
+
+    <item
+        android:id="@+id/client"
+        android:title="Client"
+        app:showAsAction="always"
+        android:icon="@drawable/client"
+        >
+    </item>
+
+
+</menu>
