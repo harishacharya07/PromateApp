@@ -10,7 +10,6 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ttwcalc.promate.R;
-import com.ttwcalc.promate.SubContractorFragment;
 import com.ttwcalc.promate.SubContractorsFragment;
 
 public class DetailsMainActivity extends AppCompatActivity {

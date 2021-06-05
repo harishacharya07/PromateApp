@@ -3,7 +3,7 @@ package com.ttwcalc.promate.models;
 public class SubContractorsListModel {
 
     private String name;
-    private String nameOfWork;
+    private String work;
 
     public SubContractorsListModel() {
     }
@@ -17,15 +17,15 @@ public class SubContractorsListModel {
     }
 
     public String getNameOfWork() {
-        return nameOfWork;
+        return work;
     }
 
-    public void setNameOfWork(String nameOfWork) {
-        this.nameOfWork = nameOfWork;
+    public void setNameOfWork(String work) {
+        this.work = work;
     }
 
-    public SubContractorsListModel(String name, String nameOfWork) {
+    public SubContractorsListModel(String name, String work) {
         this.name = name;
-        this.nameOfWork = nameOfWork;
+        this.work = work;
     }
 }

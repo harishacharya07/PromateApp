@@ -53,6 +53,6 @@ class ProjectViewHolder extends RecyclerView.ViewHolder {
     public ProjectViewHolder(@NonNull View itemView) {
         super(itemView);
         subContractorName = itemView.findViewById(R.id.name_sub_contractor);
-        subContractorWork = itemView.findViewById(R.id.name_of_work);
+        subContractorWork = itemView.findViewById(R.id.name_of_works);
     }
 }
