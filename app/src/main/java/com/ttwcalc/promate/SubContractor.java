@@ -5,63 +5,48 @@ public class SubContractor {
     private String date;
     private String id;
     private String amount;
-    private String place;
+    private String projectLocation;
 
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
-    }
-
-    String pid;
-
-    SubContractor() {
-
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public SubContractor(String name) {
-        this.name = name;
+    public SubContractor() {
     }
 
     public String getName() {
         return name;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public String getProjectLocation() {
+        return projectLocation;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getPlace(){
-        return place;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setPlace(String place) {
-        this.name = place;
-    }
-
-    public String getAmount(){
-        return amount;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public void setProjectLocation(String projectLocation) {
+        this.projectLocation = projectLocation;
     }
 }

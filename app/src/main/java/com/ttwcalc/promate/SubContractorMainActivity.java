@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,12 +36,18 @@ public class SubContractorMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_contractor_main);
 
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        String auth = firebaseAuth.getCurrentUser().getUid();
+
         recyclerView = findViewById(R.id.recyclerView);
         textView = findViewById(R.id.empty);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SubContractorMainActivity.this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Exprnditure");
+        Intent intent = getIntent();
+        String projectId = intent.getStringExtra("projectId");
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(auth);
 
         subContractorList = new ArrayList<>();
 

@@ -9,7 +9,7 @@
     </item>
 
     <item
-        android:title="All Project"
+        android:title="Feedback"
         android:id="@+id/al"
         android:icon="@drawable/ic_baseline_person_24"
         >
@@ -23,8 +23,8 @@
     </item>
 
     <item
-        android:title="All Project"
-        android:id="@+id/alll"
+        android:title="logout"
+        android:id="@+id/logout"
         android:icon="@drawable/ic_baseline_person_24"
         >
     </item>

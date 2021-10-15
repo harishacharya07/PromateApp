@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             } else if (userType.equals("subcontractor")) {
                 Intent intent = new Intent(LoginActivity.this,
-                        SubContractorMainActivity.class);
+                        SubContractorDashBoard.class);
                 startActivity(intent);
                 finish();
             } else {

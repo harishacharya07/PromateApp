@@ -16,11 +16,11 @@ public class SubContractorsListModel {
         this.name = name;
     }
 
-    public String getNameOfWork() {
+    public String getWork() {
         return work;
     }
 
-    public void setNameOfWork(String work) {
+    public void setWork(String work) {
         this.work = work;
     }
 

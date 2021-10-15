@@ -60,7 +60,7 @@ public class SelectYourRollActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectYourRollActivity.this,
-                        SubContractorMainActivity.class);
+                        SubContractorDashBoard.class);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(USER_TYPE, "subcontractor");
                 editor.apply();

@@ -55,7 +55,6 @@ public class ExpenditureActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recylerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        changeToClient = findViewById(R.id.change_client);
 
         toolbar = findViewById(R.id.exp_toolbar);
         setSupportActionBar(toolbar);
@@ -81,7 +80,6 @@ public class ExpenditureActivity extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance("https://promate-e5e9a-default-rtdb.firebaseio.com/");
         floatingActionButton = findViewById(R.id.fab);
-        totalValues = (TextView) findViewById(R.id.total);
         totalValues.setText(names);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

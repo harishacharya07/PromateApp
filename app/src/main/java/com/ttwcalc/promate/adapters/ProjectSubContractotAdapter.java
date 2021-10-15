@@ -37,7 +37,7 @@ public class ProjectSubContractotAdapter extends RecyclerView.Adapter<ProjectVie
     @Override
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
         holder.subContractorName.setText(subContractorsListModelList.get(position).getName());
-        holder.subContractorWork.setText(subContractorsListModelList.get(position).getNameOfWork());
+        holder.subContractorWork.setText(subContractorsListModelList.get(position).getWork());
     }
 
     @Override

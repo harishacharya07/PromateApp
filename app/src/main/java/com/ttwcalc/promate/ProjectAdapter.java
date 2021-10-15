@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ttwcalc.promate.subcontractor.DetailsMainActivity;
+import com.ttwcalc.promate.subcontractor.SubContractorFragment;
 
 public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdapter.myviewHolder> {
 
@@ -47,8 +49,10 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), DetailsMainActivity.class);
+                SubContractorFragment subContractorFragment = new SubContractorFragment();
                 intent.putExtra("pid", pid);
                 holder.itemView.getContext().startActivity(intent);
+
             }
         });
 

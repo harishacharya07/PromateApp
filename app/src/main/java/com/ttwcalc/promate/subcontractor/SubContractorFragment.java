@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,8 @@ import com.ttwcalc.promate.R;
 import com.ttwcalc.promate.adapters.ProjectSubContractotAdapter;
 import com.ttwcalc.promate.models.SubContractorsListModel;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +38,7 @@ public class SubContractorFragment extends Fragment {
     private List<SubContractorsListModel> subContractorsListModels;
     private ProjectSubContractotAdapter projectSubContractotAdapter;
     private FloatingActionButton floatingActionButton;
+    private TextView textView;
 
     @Nullable
     @Override
@@ -44,9 +48,14 @@ public class SubContractorFragment extends Fragment {
         recyclerView = view.findViewById(R.id.subcontractor_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         floatingActionButton = view.findViewById(R.id.sub_contractor_fab);
+        textView = view.findViewById(R.id.total_pid);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+        Bundle bundle = getArguments();
+        String pid = bundle.getString("pid");
+
+        textView.setText(pid);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Subcontractors");
 
